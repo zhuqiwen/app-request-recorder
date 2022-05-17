@@ -26,8 +26,10 @@ class RequestRecorder
         $entry = $this->formatEntry();
         $this->createFolder();
         $this->createPath();
+
+        $filePath = $this->folderPath . DIRECTORY_SEPARATOR . $this->fileName;
         try {
-            file_put_contents($this->filePath, $entry, FILE_APPEND);
+            file_put_contents($filePath, $entry, FILE_APPEND);
         } catch (\RuntimeException $e) {
             $filePath = $this->folderPath . DIRECTORY_SEPARATOR . $this->logName;
             file_put_contents($filePath, $e->getMessage() . PHP_EOL, FILE_APPEND);
