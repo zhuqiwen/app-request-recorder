@@ -51,7 +51,7 @@ class RequestRecorder
     {
         $entry = $this->buildEntry();
 
-        return json_encode($entry);
+        return json_encode($entry) . PHP_EOL;
     }
 
 
