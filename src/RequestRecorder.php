@@ -9,7 +9,7 @@ class RequestRecorder
     public $logName = 'error.log';
     public $extra;
 
-    public function __construct($folderPath, $fileName, $extra)
+    public function __construct($folderPath, $fileName, $extra = [])
     {
         $this->fileName = $fileName;
         $this->folderPath = $folderPath;
