@@ -7,11 +7,13 @@ class RequestRecorder
     public $fileName;
     public $folderPath;
     public $logName = 'error.log';
+    public $extra;
 
-    public function __construct($folderPath, $fileName)
+    public function __construct($folderPath, $fileName, $extra)
     {
         $this->fileName = $fileName;
         $this->folderPath = $folderPath;
+        $this->extra = $extra;
     }
 
 
@@ -28,12 +30,13 @@ class RequestRecorder
         }
     }
 
-    public function buildEntry($extra = []): array
+    public function buildEntry(): array
     {
         $now = $this->getNow();
         $ip = $this->getIP();
         $uri = $this->getRequestURI();
         $method = $this->getRequestMethod();
+        $extra = $this->extra;
         return compact('now', 'ip', 'uri', 'method', 'extra');
     }
 
