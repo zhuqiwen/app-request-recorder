@@ -19,6 +19,10 @@ class RequestRecorder
 
     public function append()
     {
+        if(!$this->isRealServer()){
+            return;
+        }
+
         $entry = $this->formatEntry();
         $this->createFolder();
         $this->createPath();
@@ -85,5 +89,10 @@ class RequestRecorder
         if (!file_exists($filePath)) {
             touch($filePath);
         }
+    }
+
+    public function isRealServer():bool
+    {
+        return substr_count($_SERVER['HTTP_HOST'], 'sitehost');
     }
 }
