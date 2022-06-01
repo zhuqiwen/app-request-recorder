@@ -95,6 +95,6 @@ class RequestRecorder
 
     public function isRealServer():bool
     {
-        return substr_count($_SERVER['HTTP_HOST'], 'sitehost');
+        return !substr_count($_SERVER['HTTP_HOST'] , 'localhost');
     }
 }
